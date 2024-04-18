@@ -1,5 +1,3 @@
-use std::ops::Not;
-
 use rocket::http::Status;
 use rocket::serde::json::Json;
 
