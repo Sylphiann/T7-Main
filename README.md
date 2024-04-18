@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -91,5 +91,16 @@ Let's just say if there were another case where there would be another unique ca
 **A3**: I haven't done a further research on how compiler constraints on Rust works. But if my understanding is right, it should not be necessary to use DashMap, even more since it's an external library. Dealing with mutability might work if we would work with a Singleton pattern.
 
 #### Reflection Publisher-2
+**Q1**: In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+**A1**: It goes around the concept of achieving low coupling with separation of concern (remember Single Responsibility Principle), that is with a reason to improve our code's maintainability, Extensibility and Readability. Further explanation would be like this; Model should only focus on how its instance behave without any special interference that wouldn't happen by it's original nature, like what attributes it had and what type each of those attributes are, to the more complex behavior like value restrictions and special value formatting. The rest of the logic, that is the *Business* logic of those instances should be handled on the "Service" and "Repository" part of the application, which is the place on how those instances were to be handled within the application and stored to the database.
+
+**Q2**: What happens if we only use the Model? Explain your imagination on how the interactions between each model (**Program**, **Subscriber**, **Notification**) affect the code complexity for each model?
+
+**A2**: Unecessarily high-coupling, that is. I can't imagine how bloated the Model section of the codebase would be. There would be way less files in the directory while the model files would be full of all kind of logic mixed in together on the model level, repository/database level, to business logic level. It should still work, but forget trying to develop the code further, even it would be hard for anyone alse (or even ourselves) to understand what our code is doing.
+
+**Q3**: Have you explored more about **Postman**? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+**A3**: In my own experience; The interface is neat and tidy, it's nice to have an access to an API endpoint without having to use a browser (which is pretty hard to navigate what kind of information we want to get). But the best feature for me personally is the collection system. One can import an already created Postman Collection which would skip the part where we have to manually structurize directories and make the approriate Requests (which is a painstakingly repetitive procedure). But here's the best part of the collection system, it is that we can export our own collection, which includes saved Requests that would tremendously help API documentation to cover all kinds of possible responses from our application.
 
 #### Reflection Publisher-3
