@@ -69,7 +69,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
     -   [x] Commit: `Implement publish function in Program service and Program controller.`
     -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -104,3 +104,14 @@ Let's just say if there were another case where there would be another unique ca
 **A3**: In my own experience; The interface is neat and tidy, it's nice to have an access to an API endpoint without having to use a browser (which is pretty hard to navigate what kind of information we want to get). But the best feature for me personally is the collection system. One can import an already created Postman Collection which would skip the part where we have to manually structurize directories and make the approriate Requests (which is a painstakingly repetitive procedure). But here's the best part of the collection system, it is that we can export our own collection, which includes saved Requests that would tremendously help API documentation to cover all kinds of possible responses from our application.
 
 #### Reflection Publisher-3
+**Q1**: Observer Pattern has two variations: **Push model** (publisher pushes data to subscribers) and *Pull model** (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+**A1**: With the logs show by the Response given by the program as shown by the module, a notification is sent to the subscriber everytime a Product was `CREATED` or `DELETED`, which meant the Observation Pattern uses the **Push model** (publisher pushes data to subscribers).
+
+**Q2**: What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+**A2**: If we were to use the **Pull model**, the advantages would be we won't expose ourselves to the publishers that we are subscribed to them, ensuring our own data safety, which mostly concerns our preferences in this case. Although the disadvantage is not a light one either, we would only get the notification manually whenever we wonted to, which meant we won't get the notification in real time and not the exact time when the `CREATED` or `DELETED` product was done.
+
+**Q3**: Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+**A3**: It would mean that the notification being sent flows in a single-threadded program, and with that, there would also be a whole lot chronological issues involved with the notification that are being sent. This should not expose ourselves to any other risks outside this issue since Rust ensures our program runs properly during compilation. Although it would be extremely inefficient for program usage in a much bigger scale, as one could imagine thousands of users waiting for millions of notifications on a sigle-threadded program.
